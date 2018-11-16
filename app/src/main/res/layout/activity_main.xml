@@ -4,15 +4,121 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@drawable/background_app"
+    tools:context=".MainActivity"
+    tools:ignore="MissingConstraints">
+
+    <ImageView
+        android:id="@+id/image_avatars"
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="@dimen/dp_200"
+        android:background="@drawable/background_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.15" />
 
     <TextView
+        android:id="@+id/text_view_title"
+        android:layout_width="@dimen/dp_300"
+        android:layout_height="@dimen/dp_25"
+        android:layout_marginTop="@dimen/dp_8"
+        android:text="@string/title_example"
+        android:textAlignment="center"
+        android:textColor="#000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_avatars" />
+
+    <SeekBar
+        android:id="@+id/seek_bar_position"
+        android:layout_width="@dimen/dp_300"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_50"
+        android:progress="30"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_title" />
+
+    <TextView
+        android:id="@+id/text_view_elapsed_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="@string/elapsed_time"
+        app:layout_constraintStart_toStartOf="@id/seek_bar_position"
+        app:layout_constraintTop_toBottomOf="@+id/seek_bar_position" />
+
+    <TextView
+        android:id="@+id/text_view_remaining_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/remaining_time"
+        app:layout_constraintEnd_toEndOf="@id/seek_bar_position"
+        app:layout_constraintTop_toBottomOf="@+id/seek_bar_position" />
+
+    <Button
+        android:id="@+id/button_previous"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:layout_marginTop="@dimen/dp_25"
+        android:background="@drawable/ic_skip_previous"
+        app:layout_constraintEnd_toStartOf="@+id/button_play"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_elapsed_time" />
+
+    <Button
+        android:id="@+id/button_play"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:background="@drawable/ic_pause"
+        app:layout_constraintBottom_toBottomOf="@id/button_previous"
+        app:layout_constraintEnd_toStartOf="@+id/button_next"
+        app:layout_constraintStart_toEndOf="@+id/button_previous"
+        app:layout_constraintTop_toTopOf="@id/button_previous" />
+
+    <Button
+        android:id="@+id/button_next"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:background="@drawable/ic_skip_next"
+        app:layout_constraintBottom_toBottomOf="@id/button_previous"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button_play"
+        app:layout_constraintTop_toBottomOf="@id/text_view_remaining_time"
+        app:layout_constraintTop_toTopOf="@id/button_previous" />
+
+    <ImageView
+        android:id="@+id/image_volume_mute"
+        android:layout_width="@dimen/dp_25"
+        android:layout_height="@dimen/dp_25"
+        android:src="@drawable/ic_volume_mute"
+        app:layout_constraintBottom_toBottomOf="@id/seek_bar_volume"
+        app:layout_constraintEnd_toStartOf="@id/seek_bar_volume"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/button_previous"
+        app:layout_constraintTop_toTopOf="@id/seek_bar_volume" />
+
+    <SeekBar
+        android:id="@+id/seek_bar_volume"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp_25"
+        android:max="100"
+        android:progress="50"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@id/image_volume_up"
+        app:layout_constraintStart_toEndOf="@id/image_volume_mute"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.95" />
+
+    <ImageView
+        android:id="@+id/image_volume_up"
+        android:layout_width="@dimen/dp_25"
+        android:layout_height="@dimen/dp_25"
+        android:src="@drawable/ic_volume_up"
+        app:layout_constraintBottom_toBottomOf="@id/seek_bar_volume"
+        app:layout_constraintEnd_toEndOf="@id/button_next"
+        app:layout_constraintStart_toEndOf="@+id/seek_bar_volume"
+        app:layout_constraintTop_toTopOf="@id/seek_bar_volume" />
 
 </android.support.constraint.ConstraintLayout>
